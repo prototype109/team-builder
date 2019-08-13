@@ -8,13 +8,12 @@ function App() {
   const [team, setTeam] = useState(data);
 
   const addMember = member => {
-    member.id = team.length - 1;
     setTeam([...team, member]);
   };
 
   return (
     <div className="App">
-      <Form addMember={addMember} />
+      <Form addMember={addMember} memberId={team.length}/>
       <DisplayTeam team={team} />
     </div>
   );

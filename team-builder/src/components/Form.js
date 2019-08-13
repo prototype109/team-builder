@@ -9,6 +9,7 @@ function Form(props){
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        member.id = props.memberId;
         props.addMember(member);
         setMember({name: '', email: '', role: ''})
     }
