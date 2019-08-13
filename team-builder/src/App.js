@@ -7,9 +7,14 @@ import Form from './components/Form';
 function App() {
   const [team, setTeam] = useState(data);
 
+  const addMember = member => {
+    member.id = team.length - 1;
+    setTeam([...team, member]);
+  };
+
   return (
     <div className="App">
-      <Form />
+      <Form addMember={addMember} />
       <DisplayTeam team={team} />
     </div>
   );

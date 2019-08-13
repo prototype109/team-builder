@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
 
-function Form(){
+function Form(props){
     const [member, setMember] = useState({name: '', email: '', role: ''});
 
     const handleChange = event => {
-        event.preventDefault();
         setMember({...member, [event.target.name]: event.target.value});
     };
-    
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        props.addMember(member);
+        setMember({name: '', email: '', role: ''})
+    }
+
     return(
-        <form>
+        <form onSubmit={handleSubmit}>
             <label htmlFor='name'>
                 Name:
                 <input type='text' name='name' onChange={handleChange} value={member.name}/>
@@ -22,6 +27,7 @@ function Form(){
                 role:
                 <input type='text' name='role' onChange={handleChange} value={member.role}/>
             </label>
+            <button type='submit'>Submit</button>
         </form>
     );
 }
